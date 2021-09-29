@@ -1,5 +1,5 @@
 import styles from "./input.module.css";
-import { useState } from "react";
+import React, { useState } from "react";
 
 export interface InputProps {
   id: string;
@@ -7,6 +7,7 @@ export interface InputProps {
   defaultValue?: string;
   label?: string;
   onChangeCallback?: (value: string) => void;
+  onSubmitCallback?: (value: string) => void;
   placeholder?: string;
 }
 
@@ -15,15 +16,23 @@ export const Input = ({
   label,
   placeholder,
   onChangeCallback,
+  onSubmitCallback,
   ...props
 }: InputProps): JSX.Element => {
-  const [value, setValue] = useState("");
+  const [inputValue, setInputValue] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target?.value;
-    if (!value || value.length < 1) return null;
-    setValue(value);
-    onChangeCallback && onChangeCallback(e.target?.value);
+    if (!value) return null;
+    setInputValue(value);
+    onChangeCallback && onChangeCallback(value);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter") {
+      onSubmitCallback && onSubmitCallback(inputValue);
+    }
+    return null;
   };
   return (
     <div className={styles.input}>
@@ -32,7 +41,8 @@ export const Input = ({
         id={id}
         name={id}
         onChange={handleChange}
-        value={value}
+        onKeyDown={handleKeyDown}
+        value={inputValue}
         placeholder={placeholder ? placeholder : " "}
         aria-label={label ?? "Type your city"}
       />

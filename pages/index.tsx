@@ -53,6 +53,7 @@ const Home: NextPage = () => {
             id="city"
             placeholder="Type your city..."
             onChangeCallback={handleInput}
+            onSubmitCallback={updateWeather}
           />
           <Button onClick={() => updateWeather(searchQuery)}>
             <svg
