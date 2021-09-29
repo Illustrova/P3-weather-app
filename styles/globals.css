@@ -13,7 +13,23 @@ a {
   box-sizing: border-box;
 }
 
+button {
+  border: none;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  line-height: normal;
+  width: inherit;
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+  -webkit-appearance: none;
+}
+
 /* Helper class to hide items but keep them accessible for screenreaders */
+
 .sr-only {
   position: absolute;
   left: -10000px;

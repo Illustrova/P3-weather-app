@@ -1,40 +1,38 @@
 import styles from "./input.module.css";
 import { useState } from "react";
-// import
+
 export interface InputProps {
   id: string;
   className?: string;
   defaultValue?: string;
   label?: string;
-  errorMessage?: string;
   onChange?: (value: React.ChangeEvent<HTMLInputElement>) => void;
-  handleChange: (value: string) => void;
+  onChangeCallback?: (value: string) => void;
   placeholder?: string;
 }
 
 export const Input = ({
   id,
-  errorMessage,
   label,
   placeholder,
+  onChangeCallback,
   ...props
 }: InputProps): JSX.Element => {
-  // function handleInvalid(event: React.FormEvent) {
-  //   (event.currentTarget as HTMLInputElement).setCustomValidity(errorMessage);
-  // }
-
   const [value, setValue] = useState("");
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target?.value;
+    if (!value || value.length < 1) return null;
+    setValue(value);
+    onChangeCallback && onChangeCallback(e.target?.value);
+  };
   return (
     <div className={styles.input}>
       <input
         {...props}
         id={id}
         name={id}
-        // defaultValue={props.defaultValue}
-        // type={props.type ?? "text"}
-        // onChange={checkValue}
-        onChange={(e) => setValue(e.target.value)}
+        onChange={handleChange}
         value={value}
         placeholder={placeholder ? placeholder : " "}
         aria-label={label ?? "Type your city"}
@@ -42,7 +40,6 @@ export const Input = ({
       <label className="sr-only" htmlFor={id}>
         {label ?? "city"}
       </label>
-      <div className={`${styles.errorMessage}`}>{errorMessage}</div>
     </div>
   );
 };
