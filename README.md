@@ -1,6 +1,7 @@
 # Weather App
 
-A test assignment task for P3 Group.
+A test assignment task for P3 Group. Live demo [on Vercel](https://p3-weather-app.vercel.app/)
+
 ## Getting Started
 
 1. Install dependencies:
@@ -27,4 +28,4 @@ Open [http://localhost:3000](http://localhost:3000) to see the result.
 - Typescript
 - Next.js (for static generation purpose)
 - React-Query
-- Data by WeatherAPI.com
+- Data by WeatherAPI.com.
