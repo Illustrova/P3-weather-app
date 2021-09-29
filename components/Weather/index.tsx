@@ -15,7 +15,9 @@ export const Weather = ({ location, current }: WeatherProps): JSX.Element => {
   const temperature = current.temp_c ? `${current.temp_c.toString()}°` : "";
   const condition = current.condition.text;
   const humidity = current.humidity ? `${current.humidity.toString()}%` : "";
-  const wind = current.wind_kph ? `${current.wind_kph.toString()} km/h` : "";
+  const wind = current.wind_kph
+    ? `${current.wind_kph.toString()} km/h`
+    : "0km/h";
   return (
     <div className={styles.weather}>
       <div className={styles.city}>{city}</div>

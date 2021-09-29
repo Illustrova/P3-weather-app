@@ -41,7 +41,7 @@ const Home: NextPage = () => {
     setErrorMessage(""); //reset error
     if (!value || value.length < 4) {
       setAutocompleteShown(false);
-      setErrorMessage("Type at least 3 letters");
+      setErrorMessage("Type at least 4 letters");
     }
     setAutocompleteShown(true);
     setSearchQuery(value);
