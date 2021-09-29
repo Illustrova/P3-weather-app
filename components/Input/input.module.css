@@ -1,37 +1,24 @@
 .input {
   padding: 1em;
-  font-size: 1em !important;
+  font-size: 1.5em !important;
   width: 100%;
   flex-grow: 1;
   margin-left: 2em;
+  border: 0;
 }
 
 .input:focus {
-  outline: none;
+  outline-style: dotted;
+  outline-color: var(--outline-color);
 }
 
-
-
-.input::-webkit-input-placeholder {
+.input::-webkit-input-placeholder, .input::-moz-input-placeholder {
   color: var(--text-color);
   opacity: 0.8;
 }
 
-/* 
-:-moz-placeholder {
-  color: #666;
-}
-
-::-moz-placeholder {
-  color: #666;
-}
-
-:-ms-input-placeholder {
-  color: #666;
-} */
-
 .input:-webkit-autofill, .input:-webkit-autofill:hover, .input:-webkit-autofill:focus, .input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 50px #ffcc00 inset;
+  -webkit-box-shadow: 0 0 0 50px var(--bg-color) inset;
   /* Change the color to your own background color */
   -webkit-text-fill-color: #333;
 }

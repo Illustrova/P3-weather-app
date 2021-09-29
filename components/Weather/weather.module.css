@@ -1,8 +1,14 @@
 .weather {
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.5rem;
-  max-width: 400px;
+  font-size: var(--base-font-size);
+  min-width: 400px;
   margin: 0 auto;
+  max-width: 800px;
+  margin-bottom: 4rem;
+  margin-right: 2rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
 }
 
 .city {
@@ -17,7 +23,7 @@
   font-size: 8em;
   line-height: 1;
   margin-top: 0.25em;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .condition {
@@ -30,4 +36,12 @@
   justify-content: space-between;
   font-size: 0.75em;
   margin-top: 1.5em;
+  flex-direction: column;
+  width: 100%;
+}
+
+@media screen and (min-width: 1000px) {
+  .details {
+    flex-direction: row;
+  }
 }

@@ -15,6 +15,7 @@ a {
 }
 
 /* Styles reset */
+
 button {
   border: none;
   margin: 0;
@@ -42,20 +43,17 @@ input {
   border: 0;
 }
 
-
-
 /* Change Autocomplete styles in Chrome */
 
 input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, textarea:-webkit-autofill, textarea:-webkit-autofill:hover, textarea:-webkit-autofill:focus, select:-webkit-autofill, select:-webkit-autofill:hover, select:-webkit-autofill:focus {
-  border: inherit;
+  border:0;
   box-shadow: none;
   transition: background-color 5000s ease-in-out 0s;
-  caret-color: $text;
-  -webkit-text-fill-color: $text;
+  caret-color: var(--text-color);
+  -webkit-text-fill-color: var(--text-color);
 }
 
 /* Helper class to hide items but keep them accessible for screenreaders */
-
 .sr-only {
   position: absolute;
   left: -10000px;

@@ -1,5 +1,4 @@
 import styles from "./input.module.css";
-console.log("🚀 ~ file: index.tsx ~ line 2 ~ styles", styles);
 import React, { useState } from "react";
 
 export interface InputProps {

@@ -2,12 +2,14 @@
   --text-color: #030303;
   --bg-color: #d4ae26;
   --error-color: rgb(146, 28, 28);
-   --base-font-size: 1.5rem
+  --outline-color: rgba(0, 0, 0, 0.3);
+  --base-font-size: 1.5rem;
+  --desktop: 800px;
 }
 
 [data-theme="dark"] {
   --text-color: #dfdfdf;
   --bg-color: #0f2171;
   --error-color: rgb(226, 38, 38);
-   --base-font-size: 1.5rem
+  --base-font-size: 1.5rem
 }
