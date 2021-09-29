@@ -9,6 +9,7 @@
 
 .input:focus {
   outline-style: dotted;
+  outline-width: 1px;
   outline-color: var(--outline-color);
 }
 
