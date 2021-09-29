@@ -44,7 +44,7 @@ export interface WeatherData {
     forecastday: {
       date: string;
       day: WeatherDay[];
-    };
+    }[];
   };
 }
 const api = {
@@ -66,7 +66,7 @@ const api = {
   },
   fetchWeather: async (query: string): Promise<WeatherData> => {
     const response = await fetch(
-      `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${query}&days=3&aqi=no&alerts=no`,
+      `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${query}&days=4&aqi=no&alerts=no`,
       {
         method: "GET",
       }

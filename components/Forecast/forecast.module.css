@@ -1,0 +1,41 @@
+.forecast {
+  overflow-x: scroll;
+  font-size: 1em;
+  margin: 0 auto;
+  margin-top: 4rem;
+  display: inline-block;
+  width: 100%;
+}
+
+.forecast__table {
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.forecast__row {
+  margin-bottom: 2em;
+  width: 100%;
+}
+
+.forecast__header {
+  text-align: left;
+  font-weight: 600 !important;
+  font-size: 1.5em;
+  padding-bottom: 1em;
+}
+
+.forecast__item {
+  white-space: nowrap;
+  text-align: left;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 0.5em;
+}
+
+.forecast__item:first-child {
+  padding-left: 0;
+}
+.forecast__item:last-child {
+  padding-right: 0;
+}
