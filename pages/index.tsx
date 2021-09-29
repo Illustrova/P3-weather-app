@@ -6,6 +6,7 @@ import { Button } from "components/Button";
 import { Autocomplete } from "components/Autocomplete";
 import { Weather } from "components/Weather";
 import { Forecast } from "components/Forecast";
+import { Loader } from "components/Loader";
 
 import useAutocomplete from "hooks/useAutocomplete";
 import useWeather from "hooks/useWeather";
@@ -17,8 +18,16 @@ const Home: NextPage = () => {
   const [city, setCity] = useState("");
   const [isAutocompleteShown, setAutocompleteShown] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const { data: cities, error } = useAutocomplete(searchQuery);
-  const { data: weatherData, error: weatherError } = useWeather(city);
+  const {
+    data: cities,
+    error,
+    isLoading: isLoadingAutocomplete,
+  } = useAutocomplete(searchQuery);
+  const {
+    data: weatherData,
+    error: weatherError,
+    isLoading: isLoadingWeather,
+  } = useWeather(city);
 
   useEffect(() => {
     if (isError(error)) setErrorMessage(error.message);
@@ -51,7 +60,7 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>Weather</h1>
+        {/* <h1 className={styles.title}>Weather</h1> */}
         <div className={styles.search}>
           <Input
             id="city"
@@ -72,6 +81,7 @@ const Home: NextPage = () => {
         </div>
         <div className={`${styles.error}`}>{errorMessage}</div>
         <div className={styles.content}>
+          {isLoadingAutocomplete || isLoadingWeather ? <Loader /> : null}
           <Autocomplete
             cities={cities}
             isShown={isAutocompleteShown}
