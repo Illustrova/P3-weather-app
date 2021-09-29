@@ -1,0 +1,33 @@
+.weather {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.city {
+  font-weight: 600;
+}
+
+.date {
+  margin-top: 0.5em;
+}
+
+.temperature {
+  font-size: 8em;
+  line-height: 1;
+  margin-top: 0.25em;
+  font-weight: bold;
+}
+
+.condition {
+  font-weight: bold;
+  margin-top: 1em;
+}
+
+.details {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75em;
+  margin-top: 1.5em;
+}

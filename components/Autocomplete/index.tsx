@@ -1,8 +1,8 @@
 import styles from "./autocomplete.module.css";
-import { Cities } from "lib/api";
+import { City } from "lib/api";
 
 export interface AutocompleteProps {
-  cities?: Cities[];
+  cities?: City[];
   isShown: boolean;
   onClickCallback?: (value: string) => void;
 }

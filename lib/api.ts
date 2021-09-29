@@ -1,6 +1,6 @@
 const apiKey = "2d7caae1cdf0492d8c7104926212909"; // I would normally store this in secrets of course,  just wanted to avoid exchanging env files
 
-export interface Cities {
+export interface City {
   id: string;
   name: string;
   region: string;
@@ -9,23 +9,29 @@ export interface Cities {
 }
 
 export interface WeatherDay {
-  date: "2021-09-29";
-  day: {
-    avgtemp_c: number;
-    maxwind_kph: number;
-    avghumidity: number;
-    condition: {
-      text: string;
-    };
+  avgtemp_c?: number;
+  maxwind_kph?: number;
+  avghumidity?: number;
+  condition: {
+    text: string;
   };
 }
 
+export interface WeatherDayExtended extends WeatherDay {
+  temp_c?: number;
+  humidity?: number;
+  wind_kph?: number;
+}
+
+export interface Location {
+  name: string;
+  region: string;
+  country: string;
+  localtime: 1632934516;
+}
+
 export interface WeatherData {
-  location: {
-    name: string;
-    region: string;
-    country: string;
-  };
+  location: Location;
   current: {
     temp_c: number;
     condition: {
@@ -35,11 +41,14 @@ export interface WeatherData {
     humidity: number;
   };
   forecast: {
-    forecastday: WeatherDay[];
+    forecastday: {
+      date: string;
+      day: WeatherDay[];
+    };
   };
 }
 const api = {
-  fetchAutocomplete: async (query: string): Promise<Cities[]> => {
+  fetchAutocomplete: async (query: string): Promise<City[]> => {
     const response = await fetch(
       `https://api.weatherapi.com/v1/search.json?key=${apiKey}&q=${query}`,
       {

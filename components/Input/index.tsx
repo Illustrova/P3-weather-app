@@ -23,8 +23,7 @@ export const Input = ({
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target?.value;
-    if (!value) return null;
-    setInputValue(value);
+    value ? setInputValue(value) : setInputValue("");
     onChangeCallback && onChangeCallback(value);
   };
 

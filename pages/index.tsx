@@ -4,6 +4,7 @@ import styles from "../styles/Home.module.css";
 import { Input } from "components/Input";
 import { Button } from "components/Button";
 import { Autocomplete } from "components/Autocomplete";
+import { Weather } from "components/Weather";
 
 import useAutocomplete from "hooks/useAutocomplete";
 import useWeather from "hooks/useWeather";
@@ -16,9 +17,9 @@ const Home: NextPage = () => {
   const [isAutocompleteShown, setAutocompleteShown] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const { data: cities, error } = useAutocomplete(searchQuery);
-  const { data: weather, error: weatherError } = useWeather(city);
-  console.log("🚀 ~ file: index.tsx ~ line 20 ~ weatherError", weatherError);
-  console.log("🚀 ~ file: index.tsx ~ line 20 ~ weather", weather);
+  const { data: weatherData, error: weatherError } = useWeather(city);
+  console.log("🚀 ~ file: index.tsx ~ line 21 ~ weatherError", weatherError);
+  console.log("🚀 ~ file: index.tsx ~ line 21 ~ weatherData", weatherData);
 
   useEffect(() => {
     if (isError(error)) setErrorMessage(error.message);
@@ -73,6 +74,7 @@ const Home: NextPage = () => {
             isShown={isAutocompleteShown}
             onClickCallback={updateWeather}
           />
+          {weatherData && <Weather {...weatherData} />}
         </div>
       </main>
     </div>
