@@ -28,9 +28,15 @@ const MONTHS = [
   "December",
 ];
 
-export const getFormattedDate = (timestamp: number) => {
-  const date = new Date(timestamp);
-  console.log("🚀 ~ file: index.tsx ~ line 17 ~  date", date);
+function isValidDate(d: Date) {
+  return d instanceof Date && !isNaN(+d);
+}
+export const getFormattedDate = (dateString: string) => {
+  const date = new Date(dateString);
+  if (!isValidDate(date)) {
+    // backup for Safari - just prettify string a bit and return as-is
+    return dateString.split(" ")[0];
+  }
   const weekday = DAYS[date.getDay()];
   const month = MONTHS[date.getMonth()];
   return `${weekday} — ${date.getDate()} ${month}`;

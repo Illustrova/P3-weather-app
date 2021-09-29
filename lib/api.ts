@@ -27,7 +27,7 @@ export interface Location {
   name: string;
   region: string;
   country: string;
-  localtime: 1632934516;
+  localtime: string;
 }
 
 export interface WeatherData {
