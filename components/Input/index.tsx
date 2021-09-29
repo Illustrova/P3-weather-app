@@ -1,4 +1,5 @@
 import styles from "./input.module.css";
+console.log("🚀 ~ file: index.tsx ~ line 2 ~ styles", styles);
 import React, { useState } from "react";
 
 export interface InputProps {
@@ -34,7 +35,7 @@ export const Input = ({
     return null;
   };
   return (
-    <div className={styles.input}>
+    <>
       <input
         {...props}
         id={id}
@@ -44,10 +45,11 @@ export const Input = ({
         value={inputValue}
         placeholder={placeholder ? placeholder : " "}
         aria-label={label ?? "Type your city"}
+        className={styles.input}
       />
       <label className="sr-only" htmlFor={id}>
         {label ?? "city"}
       </label>
-    </div>
+    </>
   );
 };

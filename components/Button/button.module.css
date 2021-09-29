@@ -1,5 +1,7 @@
 .button {  
   background-repeat: no-repeat;
-  height: 1em;
-  width: 1em;
+  height: 1.5em;
+  width: 1.5em;
+  margin: 1em;
+  cursor: pointer;
 }

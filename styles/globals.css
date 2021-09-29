@@ -1,3 +1,4 @@
+@import "./variables.css";
 html, body {
   padding: 0;
   margin: 0;
@@ -13,6 +14,7 @@ a {
   box-sizing: border-box;
 }
 
+/* Styles reset */
 button {
   border: none;
   margin: 0;
@@ -26,6 +28,30 @@ button {
   -webkit-font-smoothing: inherit;
   -moz-osx-font-smoothing: inherit;
   -webkit-appearance: none;
+}
+
+input {
+  display: inline-block;
+  margin: inherit;
+  font-family: inherit;
+  line-height: inherit;
+  white-space: normal;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+  background: none;
+  border: 0;
+}
+
+
+
+/* Change Autocomplete styles in Chrome */
+
+input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, textarea:-webkit-autofill, textarea:-webkit-autofill:hover, textarea:-webkit-autofill:focus, select:-webkit-autofill, select:-webkit-autofill:hover, select:-webkit-autofill:focus {
+  border: inherit;
+  box-shadow: none;
+  transition: background-color 5000s ease-in-out 0s;
+  caret-color: $text;
+  -webkit-text-fill-color: $text;
 }
 
 /* Helper class to hide items but keep them accessible for screenreaders */
