@@ -18,6 +18,7 @@ const Home: NextPage = () => {
   const [city, setCity] = useState("");
   const [isAutocompleteShown, setAutocompleteShown] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+
   const {
     data: cities,
     error,
@@ -38,7 +39,7 @@ const Home: NextPage = () => {
   }, [weatherError]);
 
   const handleInput = (value: string) => {
-    setErrorMessage(""); //reset error
+    setErrorMessage(""); //reset error message
     if (!value || value.length < 4) {
       setAutocompleteShown(false);
       setErrorMessage("Type at least 4 letters");
@@ -60,7 +61,6 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        {/* <h1 className={styles.title}>Weather</h1> */}
         <div className={styles.search}>
           <Input
             id="city"
@@ -79,7 +79,7 @@ const Home: NextPage = () => {
             </svg>
           </Button>
         </div>
-        <div className={`${styles.error}`}>{errorMessage}</div>
+        <div className={styles.error}>{errorMessage}</div>
         <div className={styles.content}>
           {isLoadingAutocomplete || isLoadingWeather ? <Loader /> : null}
           <Autocomplete
@@ -95,6 +95,16 @@ const Home: NextPage = () => {
           )}
         </div>
       </main>
+      <footer className={styles.footer}>
+        Powered by{" "}
+        <a href="https://www.weatherapi.com/" title="Weather API">
+          WeatherAPI.com
+        </a>
+        . Design by{" "}
+        <a href="https://dribbble.com/shots/6680361-Dribbble-Daily-UI-37-Weather-2">
+          Neal Hampton
+        </a>
+      </footer>
     </div>
   );
 };

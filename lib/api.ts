@@ -43,7 +43,7 @@ export interface WeatherData {
   forecast: {
     forecastday: {
       date: string;
-      day: WeatherDay[];
+      day: WeatherDay;
     }[];
   };
 }

@@ -16,5 +16,5 @@
   outline-offset: 4px;
   outline-style: dotted;
   outline-color: var(--outline-color);
-outline-width: 1px;
+  outline-width: 1px;
 }

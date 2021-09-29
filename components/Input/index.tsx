@@ -3,8 +3,6 @@ import React, { useState } from "react";
 
 export interface InputProps {
   id: string;
-  className?: string;
-  defaultValue?: string;
   label?: string;
   onChangeCallback?: (value: string) => void;
   onSubmitCallback?: (value: string) => void;
