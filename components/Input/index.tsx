@@ -6,7 +6,6 @@ export interface InputProps {
   className?: string;
   defaultValue?: string;
   label?: string;
-  onChange?: (value: React.ChangeEvent<HTMLInputElement>) => void;
   onChangeCallback?: (value: string) => void;
   placeholder?: string;
 }

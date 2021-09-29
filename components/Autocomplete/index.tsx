@@ -4,11 +4,13 @@ import { Cities } from "lib/api";
 export interface AutocompleteProps {
   cities?: Cities[];
   isShown: boolean;
+  onClickCallback?: (value: string) => void;
 }
 
 export const Autocomplete = ({
   cities,
   isShown,
+  onClickCallback,
   ...props
 }: AutocompleteProps): JSX.Element => {
   return (
@@ -24,6 +26,7 @@ export const Autocomplete = ({
                 <button
                   aria-label="Select city"
                   className={styles.autocomplete__item}
+                  onClick={() => onClickCallback && onClickCallback(url)}
                 >
                   <span>{name}</span>
                 </button>

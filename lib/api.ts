@@ -8,6 +8,36 @@ export interface Cities {
   url: string;
 }
 
+export interface WeatherDay {
+  date: "2021-09-29";
+  day: {
+    avgtemp_c: number;
+    maxwind_kph: number;
+    avghumidity: number;
+    condition: {
+      text: string;
+    };
+  };
+}
+
+export interface WeatherData {
+  location: {
+    name: string;
+    region: string;
+    country: string;
+  };
+  current: {
+    temp_c: number;
+    condition: {
+      text: string;
+    };
+    wind_kph: number;
+    humidity: number;
+  };
+  forecast: {
+    forecastday: WeatherDay[];
+  };
+}
 const api = {
   fetchAutocomplete: async (query: string): Promise<Cities[]> => {
     const response = await fetch(
@@ -22,6 +52,22 @@ const api = {
 
     if (!response.ok) {
       throw new Error(data.error.message ?? "Error fetching cities API");
+    }
+    return data;
+  },
+  fetchWeather: async (query: string): Promise<WeatherData> => {
+    const response = await fetch(
+      `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${query}&days=3&aqi=no&alerts=no`,
+      {
+        method: "GET",
+      }
+    ).catch(() => {
+      throw new Error("Cannot fetch weather");
+    });
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.error.message ?? "Error fetching weather API");
     }
     return data;
   },

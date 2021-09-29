@@ -1,13 +1,13 @@
 import { useQuery } from "react-query";
 import api from "lib/api";
 
-const useAutocomplete = (query: string) => {
+const useWeather = (query: string) => {
   const {
     isLoading,
     error: queryError,
     data: queryData,
-  } = useQuery(["autocomplete", query], () => api.fetchAutocomplete(query), {
-    enabled: query.length > 3,
+  } = useQuery(["weather", query], () => api.fetchWeather(query), {
+    enabled: !!query && query.length > 3,
     retry: false,
   });
   const error = queryError ?? null;
@@ -18,4 +18,4 @@ const useAutocomplete = (query: string) => {
   }
 };
 
-export default useAutocomplete;
+export default useWeather;

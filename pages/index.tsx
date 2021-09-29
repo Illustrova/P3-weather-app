@@ -6,14 +6,19 @@ import { Button } from "components/Button";
 import { Autocomplete } from "components/Autocomplete";
 
 import useAutocomplete from "hooks/useAutocomplete";
+import useWeather from "hooks/useWeather";
 import { useState, useEffect } from "react";
 import { isError } from "lib/helpers";
 
 const Home: NextPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [city, setCity] = useState("");
   const [isAutocompleteShown, setAutocompleteShown] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const { data: cities, error } = useAutocomplete(searchQuery);
+  const { data: weather, error: weatherError } = useWeather(city);
+  console.log("🚀 ~ file: index.tsx ~ line 20 ~ weatherError", weatherError);
+  console.log("🚀 ~ file: index.tsx ~ line 20 ~ weather", weather);
 
   useEffect(() => {
     if (isError(error)) setErrorMessage(error.message);
@@ -27,6 +32,11 @@ const Home: NextPage = () => {
     }
     setAutocompleteShown(true);
     setSearchQuery(value);
+  };
+
+  const updateWeather = (value: string) => {
+    setCity(value);
+    setAutocompleteShown(false);
   };
 
   return (
@@ -44,7 +54,7 @@ const Home: NextPage = () => {
             placeholder="Type your city..."
             onChangeCallback={handleInput}
           />
-          <Button>
+          <Button onClick={() => updateWeather(searchQuery)}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 512 512"
@@ -57,7 +67,11 @@ const Home: NextPage = () => {
         </div>
         <div className={`${styles.error}`}>{errorMessage}</div>
         <div className={styles.content}>
-          <Autocomplete cities={cities} isShown={isAutocompleteShown} />
+          <Autocomplete
+            cities={cities}
+            isShown={isAutocompleteShown}
+            onClickCallback={updateWeather}
+          />
         </div>
       </main>
     </div>
