@@ -5,6 +5,7 @@
   justify-content: center;
   background: var(--bg-color);
   overflow: auto;
+  color: var(--text-color);
 }
 
 .main {

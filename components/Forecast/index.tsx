@@ -43,7 +43,7 @@ export const Forecast = ({ data }: ForecastProps): JSX.Element => {
                 <td className={styles.forecast__item}>{date}</td>
                 <td className={styles.forecast__item}>{temperature}</td>
                 <td className={styles.forecast__item}>{wind}</td>
-                <td className={styles.forecast__ritem}>{condition}</td>
+                <td className={styles.forecast__item}>{condition}</td>
                 <td className={styles.forecast__item}>{humidity}</td>
               </tr>
             );
