@@ -9,6 +9,7 @@ const useAutocomplete = (query: string) => {
   } = useQuery(["autocomplete", query], () => api.fetchAutocomplete(query), {
     enabled: query.length > 3,
     retry: false,
+    staleTime: 30000
   });
   const error = queryError ?? null;
   const data = queryData && !error ? queryData : undefined;
