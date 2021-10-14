@@ -11,7 +11,6 @@ import { Loader } from "components/Loader";
 import useAutocomplete from "hooks/useAutocomplete";
 import useWeather from "hooks/useWeather";
 import { useState, useEffect } from "react";
-import { isError } from "lib/helpers";
 
 const Home: NextPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -21,9 +20,10 @@ const Home: NextPage = () => {
 
   const {
     data: cities,
-    error,
+    error: autocompleteError,
     isLoading: isLoadingAutocomplete,
   } = useAutocomplete(searchQuery);
+
   const {
     data: weatherData,
     error: weatherError,
@@ -31,12 +31,9 @@ const Home: NextPage = () => {
   } = useWeather(city);
 
   useEffect(() => {
-    if (isError(error)) setErrorMessage(error.message);
-  }, [error]);
-
-  useEffect(() => {
-    if (isError(weatherError)) setErrorMessage(weatherError.message);
-  }, [weatherError]);
+    if (autocompleteError) setErrorMessage(autocompleteError.message);
+    if (weatherError) setErrorMessage(weatherError.message);
+  }, [autocompleteError, weatherError]);
 
   const handleInput = (value: string) => {
     setErrorMessage(""); //reset error message
