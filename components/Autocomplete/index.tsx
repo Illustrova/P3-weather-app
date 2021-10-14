@@ -20,9 +20,9 @@ export const Autocomplete = ({
     >
       {cities && cities.length > 0 ? (
         <ul className={styles.autocomplete__list}>
-          {cities.map(({ name, url }) => {
+          {cities.map(({ name, url, id }) => {
             return (
-              <li key={url}>
+              <li key={id}>
                 <button
                   aria-label="Select city"
                   className={styles.autocomplete__item}

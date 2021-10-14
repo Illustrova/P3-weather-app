@@ -1,5 +1,5 @@
 .forecast {
-  overflow-x: scroll;
+  overflow-x: auto;
   font-size: 1em;
   margin: 0 auto;
   display: inline-block;
