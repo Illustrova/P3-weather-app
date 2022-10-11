@@ -1,6 +1,6 @@
 # Weather App
 
-A test assignment task for P3 Group. Live demo [on Vercel](https://p3-weather-app.vercel.app/)
+A test assignment task, development time ~5 hours. Live demo [on Vercel](https://p3-weather-app.vercel.app/)
 
 ## Getting Started
 
